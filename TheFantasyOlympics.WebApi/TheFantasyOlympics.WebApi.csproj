@@ -24,4 +24,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TheFantasyOlympics.Persistence\TheFantasyOlympics.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
