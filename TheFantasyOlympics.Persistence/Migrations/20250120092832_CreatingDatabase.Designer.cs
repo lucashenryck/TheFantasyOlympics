@@ -11,7 +11,7 @@ using TheFantasyOlympics.Persistence.Context;
 namespace TheFantasyOlympics.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250119214457_CreatingDatabase")]
+    [Migration("20250120092832_CreatingDatabase")]
     partial class CreatingDatabase
     {
         /// <inheritdoc />
@@ -28,7 +28,8 @@ namespace TheFantasyOlympics.Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -41,7 +42,8 @@ namespace TheFantasyOlympics.Persistence.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("SportId")
                         .HasColumnType("int");
@@ -74,8 +76,9 @@ namespace TheFantasyOlympics.Persistence.Migrations
                     b.Property<int>("ModalityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Position")
-                        .HasColumnType("int");
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SportId")
                         .HasColumnType("int");
@@ -93,7 +96,8 @@ namespace TheFantasyOlympics.Persistence.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnOrder(1);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -106,7 +110,8 @@ namespace TheFantasyOlympics.Persistence.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnOrder(2);
 
                     b.Property<int>("SportId")
                         .HasColumnType("int");

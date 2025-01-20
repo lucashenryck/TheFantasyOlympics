@@ -1,0 +1,39 @@
+﻿using Microsoft.EntityFrameworkCore;
+using TheFantasyOlympics.Domain.Entities.Base;
+using TheFantasyOlympics.Domain.Interfaces.Repositories;
+using TheFantasyOlympics.Persistence.Context;
+
+namespace TheFantasyOlympics.Persistence.Repositories
+{
+    public class BaseEntityRepository<T>(AppDbContext context) : IBaseEntityRepository<T> where T : Entity
+    {
+        private readonly AppDbContext _context = context;
+
+        public async Task RegisterAsync(T entity)
+        {
+            await _context.Set<T>().AddAsync(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task EditAsync(T entity)
+        {
+            _context.Set<T>().Update(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var entity = await _context.Set<T>().FindAsync(id);
+            if (entity != null)
+            {
+                _context.Set<T>().Remove(entity);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<IEnumerable<T>> ListAllAsync()
+        {
+            return await _context.Set<T>().ToListAsync();
+        }
+    }
+}

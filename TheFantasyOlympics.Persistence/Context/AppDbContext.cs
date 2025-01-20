@@ -12,6 +12,32 @@ namespace TheFantasyOlympics.Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Athlete>(entity =>
+            {
+                entity.Property(a => a.Id).HasColumnOrder(1);
+
+                entity.Property(a => a.Name).HasColumnOrder(2);
+            });
+
+            modelBuilder.Entity<Modality>(entity =>
+            {
+                entity.Property(a => a.Id).HasColumnOrder(1);
+
+                entity.Property(a => a.Name).HasColumnOrder(2);
+
+                entity.Property(m => m.Type)
+                    .HasConversion<string>();
+
+                entity.Property(m => m.Genre)
+                    .HasConversion<string>(); 
+            });
+
+            modelBuilder.Entity<Medal>(entity =>
+            {
+                entity.Property(m => m.Position)
+                    .HasConversion<string>();
+            });
+
             modelBuilder.Entity<Modality>()
                 .HasOne(m => m.Sport)
                 .WithMany(s => s.Modalities)
