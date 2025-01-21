@@ -29,9 +29,20 @@ namespace TheFantasyOlympics.Application.UseCases.Medal.RegisterModalityPodium
                 }
             };
 
-            podium[0].SetPosition(Position.Gold);
-            podium[1].SetPosition(Position.Silver);
-            podium[2].SetPosition(Position.Bronze);
+            foreach (var medal in podium)
+            {
+                var existingMedal = await _medalRepository.GetMedalByModalityAsync(medal.ModalityId, medal.GetPosition());
+
+                if (existingMedal != null)
+                    continue;
+
+                if (medal.GetPosition() == Position.Gold)
+                    medal.SetPosition(Position.Gold);
+                else if (medal.GetPosition() == Position.Silver)
+                    medal.SetPosition(Position.Silver);
+                else if (medal.GetPosition() == Position.Bronze)
+                    medal.SetPosition(Position.Bronze);
+            }
 
             await _medalRepository.RegisterModalityPodiumAsync(podium);
 

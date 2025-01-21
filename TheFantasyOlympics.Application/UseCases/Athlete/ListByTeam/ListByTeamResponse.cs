@@ -7,6 +7,7 @@ namespace TheFantasyOlympics.Application.UseCases.Athlete.ListByTeam
         string Name,
         string Country,
         string? TeamName,
+        string Gender,
         SportDto Sport,
         ModalityDto Modality
     );

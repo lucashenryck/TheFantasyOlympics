@@ -9,12 +9,13 @@ namespace TheFantasyOlympics.Persistence.Repositories
     {
         private readonly AppDbContext _context = context;
 
-        public async Task<IEnumerable<Modality>> ListByFilterAsync(int? sportId, string? type, string? genre)
+        public async Task<IEnumerable<Modality>> ListByFilterAsync(int sportId, string? type, string? genre, CancellationToken cancellationToken)
         {
-            var query = _context.Modalities.AsQueryable();
+            var query = _context.Modalities
+                .Include(m => m.Sport)
+                .AsQueryable();
 
-            if (sportId.HasValue)
-                query = query.Where(m => m.SportId == sportId.Value);
+            query = query.Where(m => m.SportId == sportId);
 
             if (!string.IsNullOrEmpty(type))
                 query = query.Where(m => m.Type.ToString().Equals(type, StringComparison.OrdinalIgnoreCase));
@@ -22,7 +23,12 @@ namespace TheFantasyOlympics.Persistence.Repositories
             if (!string.IsNullOrEmpty(genre))
                 query = query.Where(m => m.Genre.ToString().Equals(genre, StringComparison.OrdinalIgnoreCase));
 
-            return await query.ToListAsync();
+            return await query.ToListAsync(cancellationToken);
+        }
+
+        public async Task<Modality?> GetByIdAsync(int modalityId)
+        {
+            return await _context.Set<Modality>().FirstOrDefaultAsync(m => m.Id == modalityId);
         }
     }
 }

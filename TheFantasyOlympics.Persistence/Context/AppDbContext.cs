@@ -17,6 +17,9 @@ namespace TheFantasyOlympics.Persistence.Context
                 entity.Property(a => a.Id).HasColumnOrder(1);
 
                 entity.Property(a => a.Name).HasColumnOrder(2);
+
+                entity.Property(a => a.Gender)
+                    .HasConversion<string>();
             });
 
             modelBuilder.Entity<Modality>(entity =>

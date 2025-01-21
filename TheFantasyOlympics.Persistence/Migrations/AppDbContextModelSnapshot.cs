@@ -34,6 +34,10 @@ namespace TheFantasyOlympics.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ModalityId")
                         .HasColumnType("int");
 

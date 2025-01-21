@@ -6,7 +6,8 @@ namespace TheFantasyOlympics.Application.UseCases.Athlete.FindById
         int Id,
         string Name,
         string Country,
-        string? TeamName,
+        string TeamName,
+        string Gender,
         SportDto Sport,
         ModalityDto Modality
     );

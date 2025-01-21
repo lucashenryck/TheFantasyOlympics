@@ -16,5 +16,9 @@ namespace TheFantasyOlympics.Domain.Entities
         {
             Position = position;
         }
+        public Position GetPosition()
+        {
+            return Position;
+        }
     }
 }

@@ -15,6 +15,9 @@ namespace TheFantasyOlympics.Persistence
             services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connectionString));
 
             services.AddScoped<IAthleteRepository, AthleteRepository>();
+            services.AddScoped<ISportRepository, SportRepository>();
+            services.AddScoped<IModalityRepository, ModalityRepository>();
+            services.AddScoped<IMedalRepository, MedalRepository>();
         }
     }
 }

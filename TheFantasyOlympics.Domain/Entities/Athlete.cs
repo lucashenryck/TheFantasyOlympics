@@ -1,4 +1,5 @@
 ﻿using TheFantasyOlympics.Domain.Entities.Base;
+using TheFantasyOlympics.Domain.Enumerations;
 
 namespace TheFantasyOlympics.Domain.Entities
 {
@@ -10,6 +11,7 @@ namespace TheFantasyOlympics.Domain.Entities
         public Sport? Sport { get; private set; }
         public int ModalityId { get; private set; }
         public Modality? Modality { get; private set; }
+        public Gender Gender { get; private set; }
 
         public void UpdateTeamName(string newTeamName)
         {

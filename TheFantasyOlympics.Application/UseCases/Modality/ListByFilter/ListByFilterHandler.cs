@@ -10,7 +10,7 @@ namespace TheFantasyOlympics.Application.UseCases.Modality.ListByFilter
 
         public async Task<List<ListByFilterResponse>> Handle(ListByFilterRequest request, CancellationToken cancellationToken)
         {
-            var modalities = await _modalityRepository.ListByFilterAsync(request.SportId, request.Type, request.Genre);
+            var modalities = await _modalityRepository.ListByFilterAsync(request.SportId, request.Type, request.Genre, cancellationToken);
 
             if (!modalities.Any())
                 return [];

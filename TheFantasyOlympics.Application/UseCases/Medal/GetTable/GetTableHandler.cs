@@ -10,7 +10,7 @@ namespace TheFantasyOlympics.Application.UseCases.Medal.GetTable
 
         public async Task<GetTableResponse> Handle(GetTableRequest request, CancellationToken cancellationToken)
         {
-            var medalCounts = await _medalRepository.GetMedalTableAsync();
+            var medalCounts = await _medalRepository.GetMedalTableAsync(cancellationToken);
 
             var goldMedals = medalCounts
                 .OrderByDescending(m => m.Gold)

@@ -26,15 +26,5 @@ namespace TheFantasyOlympics.Persistence.Repositories
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
         }
-
-        public async Task<IEnumerable<T>> ListAllAsync(CancellationToken cancellationToken)
-        {
-            return await _context.Set<T>().ToListAsync(cancellationToken);
-        }
-
-        public async Task<T?> FindById(int id, CancellationToken cancellationToken)
-        {
-            return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
-        }
     }
 }

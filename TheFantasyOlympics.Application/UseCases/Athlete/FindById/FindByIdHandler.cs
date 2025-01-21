@@ -1,11 +1,10 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using TheFantasyOlympics.Application.Dtos;
 using TheFantasyOlympics.Domain.Interfaces.Repositories;
 
 namespace TheFantasyOlympics.Application.UseCases.Athlete.FindById
 {
-    public class FindByIdHandler(IAthleteRepository athleteRepository) : IRequestHandler<FindByIdRequest, FindByIdResponse> 
+    public class FindByIdHandler(IAthleteRepository athleteRepository) : IRequestHandler<FindByIdRequest, FindByIdResponse>
     {
         private readonly IAthleteRepository _athleteRepository = athleteRepository;
 
@@ -18,6 +17,7 @@ namespace TheFantasyOlympics.Application.UseCases.Athlete.FindById
                 athlete.Name,
                 athlete.Country,
                 athlete.TeamName,
+                athlete.Gender.ToString(),
                 new SportDto(athlete.Sport!.Id, athlete.Sport.Name),
                 new ModalityDto(athlete.Modality!.Id, athlete.Modality.Name)
             );

@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using TheFantasyOlympics.Application.Dtos;
-using TheFantasyOlympics.Domain.Entities;
 using TheFantasyOlympics.Domain.Interfaces.Repositories;
 
 namespace TheFantasyOlympics.Application.UseCases.Athlete.ListByTeam
@@ -11,7 +10,7 @@ namespace TheFantasyOlympics.Application.UseCases.Athlete.ListByTeam
 
         public async Task<List<ListByTeamResponse>> Handle(ListByTeamRequest request, CancellationToken cancellationToken)
         {
-            var athletes = await _athleteRepository.ListByTeamAsync(request.TeamName);
+            var athletes = await _athleteRepository.ListByTeamAsync(request.TeamName, cancellationToken);
 
             if (!athletes.Any())
                 return [];
@@ -21,6 +20,7 @@ namespace TheFantasyOlympics.Application.UseCases.Athlete.ListByTeam
                 athlete.Name,
                 athlete.Country,
                 athlete.TeamName,
+                athlete.Gender.ToString(),
                 new SportDto(athlete.Sport!.Id, athlete.Sport.Name),
                 new ModalityDto(athlete.Modality!.Id, athlete.Modality.Name)
             )).ToList();

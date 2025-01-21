@@ -4,18 +4,18 @@ using TheFantasyOlympics.Domain.Interfaces.Repositories;
 
 namespace TheFantasyOlympics.Application.UseCases.Medal.ListBySport
 {
-    public class ListByCountryHandler(IMedalRepository medalRepository) : IRequestHandler<ListBySportRequest, List<ListBySportResponse>>
+    public class ListByCountryHandler(IMedalRepository medalRepository) : IRequestHandler<ListBySportRequest, List<ListMedalsBySportResponse>>
     {
         private readonly IMedalRepository _medalRepository = medalRepository;
 
-        public async Task<List<ListBySportResponse>> Handle(ListBySportRequest request, CancellationToken cancellationToken)
+        public async Task<List<ListMedalsBySportResponse>> Handle(ListBySportRequest request, CancellationToken cancellationToken)
         {
             var medals = await _medalRepository.ListBySportAsync(request.SportId, cancellationToken);
 
             if (!medals.Any())
                 return [];
 
-            var response = medals.Select(medal => new ListBySportResponse(
+            var response = medals.Select(medal => new ListMedalsBySportResponse(
                 medal.Id,
                 medal.Position.ToString(),
                 medal.Country,
