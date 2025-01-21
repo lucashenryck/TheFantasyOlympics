@@ -11,5 +11,10 @@ namespace TheFantasyOlympics.Domain.Entities
         public Sport? Sport { get; set; }
         public int ModalityId { get; set; }
         public Modality? Modality { get; set; }
+
+        public void SetPosition(Position position)
+        {
+            Position = position;
+        }
     }
 }

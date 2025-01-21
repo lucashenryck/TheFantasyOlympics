@@ -6,7 +6,8 @@ namespace TheFantasyOlympics.Domain.Interfaces.Repositories
     {
         Task RegisterAsync(T entity);
         Task EditAsync(T entity);
-        Task DeleteAsync(int id);
-        Task<IEnumerable<T>> ListAllAsync();
+        Task DeleteAsync(T entity);
+        Task<IEnumerable<T>> ListAllAsync(CancellationToken cancellationToken);
+        Task<T?> FindById (int id, CancellationToken cancellationToken);
     }
 }

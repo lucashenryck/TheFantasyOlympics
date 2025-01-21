@@ -2,10 +2,8 @@
 
 namespace TheFantasyOlympics.Domain.Interfaces.Repositories
 {
-    public interface IModalityRepository
+    public interface IModalityRepository : IBaseEntityRepository<Modality>
     {
-        Task RegisterAsync(Modality modality);
-        Task<IEnumerable<Modality>> ListModalitiesBySportAsync(int sportId, string? type, string? genre);
-        Task<Modality?> FindModalityPodiumAsync(int modalityId);
+        Task<IEnumerable<Modality>> ListByFilterAsync(int? sportId, string? type, string? genre);
     }
 }

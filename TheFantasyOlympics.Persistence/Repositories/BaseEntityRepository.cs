@@ -21,19 +21,20 @@ namespace TheFantasyOlympics.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(T entity)
         {
-            var entity = await _context.Set<T>().FindAsync(id);
-            if (entity != null)
-            {
-                _context.Set<T>().Remove(entity);
-                await _context.SaveChangesAsync();
-            }
+            _context.Set<T>().Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> ListAllAsync()
+        public async Task<IEnumerable<T>> ListAllAsync(CancellationToken cancellationToken)
         {
-            return await _context.Set<T>().ToListAsync();
+            return await _context.Set<T>().ToListAsync(cancellationToken);
+        }
+
+        public async Task<T?> FindById(int id, CancellationToken cancellationToken)
+        {
+            return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
         }
     }
 }

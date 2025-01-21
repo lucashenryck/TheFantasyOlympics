@@ -9,6 +9,26 @@ namespace TheFantasyOlympics.Domain.Entities
         public int SportId { get; private set; }
         public Sport? Sport { get; private set; }
         public int ModalityId { get; private set; }
-        public Modality? Modality { get; private set; } 
+        public Modality? Modality { get; private set; }
+
+        public void UpdateTeamName(string newTeamName)
+        {
+            TeamName = newTeamName;
+        }
+
+        public void UpdateCountry(string newCountry)
+        {
+            Country = newCountry;
+        }
+
+        public void UpdateSportId(int newSportId)
+        {
+            SportId = newSportId;
+        }
+
+        public void UpdateModalityId(int newModalityId)
+        {
+            ModalityId = newModalityId;
+        }
     }
 }

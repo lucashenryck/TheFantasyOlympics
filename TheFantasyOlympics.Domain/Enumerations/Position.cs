@@ -2,8 +2,8 @@
 {
     public enum Position
     {
-        Gold,
-        Silver,
-        Bronze
+        Gold = 1,
+        Silver = 2,
+        Bronze = 3
     }
 }

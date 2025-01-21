@@ -9,14 +9,6 @@ namespace TheFantasyOlympics.Persistence.Repositories
     {
         private readonly AppDbContext _context = context;
 
-        public async Task<Athlete?> FindByIdAsync(int id)
-        {
-            return await _context.Athletes
-                .Include(a => a.Sport)
-                .Include(a => a.Modality)
-                .FirstOrDefaultAsync(a => a.Id == id);
-        }
-
         public async Task<IEnumerable<Athlete>> ListByCountryAsync(string country)
         {
             return await _context.Athletes
