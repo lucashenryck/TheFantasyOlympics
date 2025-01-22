@@ -4,7 +4,7 @@ A project that simulates an API to manage "The Fantasy Olympics".
 
 DEVELOPMENT TOOLS:
 - IDE: I used Visual Studio 2022 because it has complete integration with the .NET (8.0) Framework, which I used for this project.
-- DATABASE: I used SQL Server because of my familiarity with it and its DBMS (Database Management System). I didn't use any credentials for it, only the Windows credentials.
+- DATABASE: I used SQL Server because of my familiarity with it and its DBMS (Database Management System). The server is local and I used the Windows Credentials.
 - SWAGGER: I used Swagger as the main documentation and for testing the endpoints.
 
 
@@ -26,13 +26,11 @@ SETUP:
 - Asp.Versioning.Mvc
 - Asp.Versioning.Mvc.ApiExplorer
 
-2. Download SQL Server and SQL Server Management Studio to read and manipulate data in the database. Used the connection string for the database server stored in the appsettings.json file within the project.
+2. Open my project (Solution) with the Visual Studio.
 
-3. Open my project (Solution) with the Visual Studio.
+3. Run the main project (Web API) on HTTPS to open the Swagger documentation as a web page.
 
-4. Run the main project (Web API) on HTTPS to open the Swagger documentation as a web page.
-
-5. If you prefer to use a tool like Insomnia, simply enter the local address (https://localhost:XXXX) followed by the rest of the endpoint defined in the controllers.
+4. If you prefer to use a tool like Insomnia, simply enter the local address (https://localhost:XXXX) followed by the rest of the endpoint defined in the controllers.
 
 
 MY DIAGNOSIS:
