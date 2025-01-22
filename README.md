@@ -41,6 +41,7 @@ MY DIAGNOSIS:
 - I noticed there is a lot of code repetition in the application layer, so I'm already studying how to implement similar methods more efficiently.
 - Tests in progress.
 - Terrible commits (too heavy, lacking specific details, and without branches).
+- I just realized I upload the project files in a wrong format.
 
 
 TESTING THE ENDPOINTS:
