@@ -38,7 +38,7 @@ MY DIAGNOSIS:
 - The front-end is missing, but I'm already envisioning it.
 - I noticed there is a lot of code repetition in the application layer, so I'm already studying how to implement similar methods more efficiently.
 - Tests in progress.
-- Terrible commits (too heavy, lacking specific details, and without branches).
+- Due to external reasons, my commits were terrible (too heavy, lacking specific details, and without branches).
 - I'm going to push the project in the right format soon.
 
 
